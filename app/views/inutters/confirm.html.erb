@@ -1,0 +1,25 @@
+<!--入力確認用フォームの宣言-->
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+    
+    <h3>以下の内容で投稿する</h3>
+    
+    <%=form_for(@inutter) do |f| %> 
+      <!-- `f.hidden_field`を使用して、リクエストパラメータに値を設定。 -->
+      <%= f.hidden_field :content %>
+    
+      <!-- @blog.titleと@blog.contentとすることで、表示用の値を画面に出力 -->
+      <p>内容:<%= @inutter.content %></p>
+      <%= f.submit "登録する",class: 'btn btn-primary btn-block' %>
+    <% end %>
+    
+    <%= form_for(@inutter, url: new_inutter_path, method: 'get') do |f| %>
+      <%= f.hidden_field :content %>
+      <%= f.submit "もどる", name:'back',class: 'btn btn-default btn-block'  %>
+    <% end %>
+    
+    <!--前のページへ戻る-->
+    <!--<%= link_to '戻る', :back %>-->
+  </div>
+</div>
+

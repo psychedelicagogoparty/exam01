@@ -1,0 +1,20 @@
+<!--以下はbootstrap使用時の書き方-->
+<div class= "container">
+  <div class= "wrapper col-md-8 col-md-offset-2 col-sm-10">
+
+  <p><%=notice%></p> <!--フィードバックメッセージの表示-->
+  <h1>投稿一覧</h1>
+  <%= link_to "投稿する",new_inutter_path,class:'btn btn-default' %>
+  <!--<#%= link_to "お問い合わせ",new_contact_path, class:'btn btn-default' %>-->
+  
+  <% @inutters.each do |inutter| %>
+  <div class="row">
+    <h4><strong><%= inutter.title %></strong></h4>
+      <p><%= inutter.content %></p>
+      <%= link_to "編集", edit_inutter_path(inutter.id), class: 'btn btn-default btn-sm btn-success' %>
+      <%= link_to "削除", inutter_path(inutter.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
+  </div>
+  <% end %>
+  </div>
+</div>
+
